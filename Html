@@ -1,60 +1,39 @@
-<template>
-  <div>
-    <h1 class="text-2xl font-bold mb-4">สร้างโพสต์ใหม่</h1>
-    <!-- ฟอร์มสำหรับการสร้างโพสต์ -->
-    <form @submit.prevent="createPost">
-      <div class="mb-4">
-        <label for="title" class="block text-sm font-medium text-gray-700">หัวข้อ:</label>
-        <input type="text" id="title" v-model="title" class="mt-1 p-2 border rounded w-full">
-      </div>
-      <div class="mb-4">
-        <label for="content" class="block text-sm font-medium text-gray-700">เนื้อหา:</label>
-        <textarea id="content" v-model="content" class="mt-1 p-2 border rounded w-full"></textarea>
-      </div>
-      <div class="mb-4">
-        <label for="image" class="block text-sm font-medium text-gray-700">รูปภาพ:</label>
-        <input type="file" id="image" @change="handleImageUpload" class="mt-1">
-      </div>
-      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">สร้างโพสต์</button>
-    </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gratuu</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+  <div id="app" class="container mx-auto">
+    <router-view></router-view>
   </div>
-</template>
 
-<script>
-export default {
-  data() {
-    return {
-      title: '',
-      content: '',
-      image: null
-    };
-  },
-  methods: {
-    createPost() {
-      // ส่งข้อมูลโพสต์ไปยัง API หรือเซิร์ฟเวอร์
-      const postData = {
-        title: this.title,
-        content: this.content,
-        image: this.image
-      };
-      // ทำการสร้างโพสต์และอัปโหลดรูปภาพ
-      // หลังจากนั้นส่งไปยังหน้าสำหรับดูโพสต์ทั้งหมด
-    },
-    handleImageUpload(event) {
-      // อ่านไฟล์ภาพที่เลือกจากอุปกรณ์
-      const file = event.target.files[0];
-      // ทำการอัปโหลดไฟล์ภาพ
-      // ในที่นี้เราจะใช้ FileReader เพื่อแสดงภาพตัวอย่าง
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.image = reader.result;
-      };
-      reader.readAsDataURL(file);
-    }
-  }
-};
-</script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  <script>
+    // components
+    const AllPosts = { template: '<div>All Posts Component</div>' }
+    const CreatePost = { template: '<div>Create Post Component</div>' }
 
-<style>
-/* เพิ่มสไตล์เพิ่มเติมตามต้องการ */
-</style>
+    // routes
+    const routes = [
+      { path: '/', component: AllPosts },
+      { path: '/create', component: CreatePost }
+    ]
+
+    // Create router
+    const router = new VueRouter({
+      routes 
+    })
+
+    // Create Vue
+    new Vue({
+      el: '#app',
+      router
+    })
+  </script>
+</body>
+</html>
