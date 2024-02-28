@@ -1,3 +1,7 @@
+<script setup>
+import HelloWorld from './components/HelloWorld.vue'
+import TheWelcome from './components/TheWelcome.vue'
+</script>
 <template>
   <div class="container">
     
@@ -14,7 +18,7 @@ export default {
   data() {
     return {
       posts: [
-        { title: 'หอพักAAกว้างไหมคะ',imageUrl: ''},
+        { title: 'หอพักAAกว้างไหมคะ'},
         { title: 'แนะนำหอพักหน้าม.พะเยาหน่อยครับ'},
         { title: 'จะต่อสัญญาต้องเตรียมอะไรบ้างคับ'},
         { title: 'ยีนยืนเหงาๆ ในมือของเขามีทินเนอร์ '},
