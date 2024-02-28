@@ -1,7 +1,6 @@
 <template>
   <div class="container">
-    
-    <div class="post" v-for="(post, index) in posts" :key="index">
+    <div class="post" v-for="(post, index) in posts" :key="index" @click="goToPostDetails(post.title)">
       <h2>{{ post.title }}</h2>
       <p>{{ post.content }}</p>
     </div>
@@ -25,13 +24,15 @@ export default {
         { title: 'มีใครสนใจซื้อไมค์ไหม่ให้พี่กิ๊กบ้าง'},
         { title: 'ทำไมเก๊ะไม่พูดเลย'},
         { title: 'ปั่นลึกล้ำสุดหยั่งถึงคณึงหา'}
-        
       ]
     };
   },
   methods: {
     goToCreatePage() {
-      window.location.href = '';
+      console.log("");
+    },
+    goToPostDetails(postTitle) {
+      console.log("", postTitle);
     }
   }
 };
@@ -50,6 +51,7 @@ export default {
   margin-bottom: 30px;
   border-radius: 5px;
   box-shadow: 10px 8px 5px #8888;
+  cursor: pointer;
 }
 
 .btn-create {
