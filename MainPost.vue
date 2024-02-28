@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    
     <div class="post" v-for="(post, index) in posts" :key="index">
       <h2>{{ post.title }}</h2>
       <p>{{ post.content }}</p>
@@ -13,7 +14,7 @@ export default {
   data() {
     return {
       posts: [
-        { title: 'หอพักAAกว้างไหมคะ'},
+        { title: 'หอพักAAกว้างไหมคะ',imageUrl: ''},
         { title: 'แนะนำหอพักหน้าม.พะเยาหน่อยครับ'},
         { title: 'จะต่อสัญญาต้องเตรียมอะไรบ้างคับ'},
         { title: 'ยีนยืนเหงาๆ ในมือของเขามีทินเนอร์ '},
